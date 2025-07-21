@@ -53,7 +53,7 @@ class Triangle extends Shape {
 }
 
 // Test class with main method
-public class Lab2 {
+public class Lab2a {
     public static void main(String[] args) {
         Shape rect = new Rectangle(10, 5);
         Shape circle = new Circle(7);
