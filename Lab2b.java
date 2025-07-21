@@ -1,117 +1,83 @@
-// Vehicle interface defining required methods
-interface Vehicle {
-    void displayInfo();
-    double calculateFuelEfficiency(); // km per liter
-    double calculateDistanceTraveled(double hours, double averageSpeed);
-    double getMaxSpeed();
+class Vehicle {
+    protected String make;
+    protected String model;
+    protected int year;
+    protected String fuelType;
+
+    public Vehicle(String make, String model, int year, String fuelType) {
+        this.make = make;
+        this.model = model;
+        this.year = year;
+        this.fuelType = fuelType;
+    }
+
+    public void displayInfo() {
+        System.out.println("Make: " + make + ", Model: " + model +
+                ", Year: " + year + ", Fuel Type: " + fuelType);
+    }
+
+    // Default implementations (can be overridden)
+    public double calculateFuelEfficiency() {
+        return 0;
+    }
+
+    public double calculateDistanceTraveled(double hours, double averageSpeed) {
+        return hours * averageSpeed;
+    }
+
+    public double getMaxSpeed() {
+        return 0;
+    }
 }
 
-// Truck class implementing Vehicle interface
-class Truck implements Vehicle {
-    private String make;
-    private String model;
-    private int year;
-    private String fuelType;
-
+class Truck extends Vehicle {
     public Truck(String make, String model, int year, String fuelType) {
-        this.make = make;
-        this.model = model;
-        this.year = year;
-        this.fuelType = fuelType;
-    }
-
-    @Override
-    public void displayInfo() {
-        System.out.println("Truck - Make: " + make + ", Model: " + model + ", Year: " + year + ", Fuel Type: " + fuelType);
+        super(make, model, year, fuelType);
     }
 
     @Override
     public double calculateFuelEfficiency() {
-        return 6.0; // example km/l for truck
-    }
-
-    @Override
-    public double calculateDistanceTraveled(double hours, double averageSpeed) {
-        return hours * averageSpeed;
+        return 6.0; // Example km/l for trucks
     }
 
     @Override
     public double getMaxSpeed() {
-        return 110; // example km/h
+        return 110; // Example max speed for trucks
     }
 }
 
-// Car class implementing Vehicle interface
-class Car implements Vehicle {
-    private String make;
-    private String model;
-    private int year;
-    private String fuelType;
-
+class Car extends Vehicle {
     public Car(String make, String model, int year, String fuelType) {
-        this.make = make;
-        this.model = model;
-        this.year = year;
-        this.fuelType = fuelType;
-    }
-
-    @Override
-    public void displayInfo() {
-        System.out.println("Car - Make: " + make + ", Model: " + model + ", Year: " + year + ", Fuel Type: " + fuelType);
+        super(make, model, year, fuelType);
     }
 
     @Override
     public double calculateFuelEfficiency() {
-        return 16.0; // example km/l for car
-    }
-
-    @Override
-    public double calculateDistanceTraveled(double hours, double averageSpeed) {
-        return hours * averageSpeed;
+        return 16.0; // Example km/l for cars
     }
 
     @Override
     public double getMaxSpeed() {
-        return 180; // example km/h
+        return 180; // Example max speed for cars
     }
 }
 
-// Motorcycle class implementing Vehicle interface
-class Motorcycle implements Vehicle {
-    private String make;
-    private String model;
-    private int year;
-    private String fuelType;
-
+class Motorcycle extends Vehicle {
     public Motorcycle(String make, String model, int year, String fuelType) {
-        this.make = make;
-        this.model = model;
-        this.year = year;
-        this.fuelType = fuelType;
-    }
-
-    @Override
-    public void displayInfo() {
-        System.out.println("Motorcycle - Make: " + make + ", Model: " + model + ", Year: " + year + ", Fuel Type: " + fuelType);
+        super(make, model, year, fuelType);
     }
 
     @Override
     public double calculateFuelEfficiency() {
-        return 22.0; // example km/l for motorcycle
-    }
-
-    @Override
-    public double calculateDistanceTraveled(double hours, double averageSpeed) {
-        return hours * averageSpeed;
+        return 22.0; // Example km/l for motorcycles
     }
 
     @Override
     public double getMaxSpeed() {
-        return 160; // example km/h
+        return 160; // Example max speed for motorcycles
     }
 }
 
-// Test class
 public class Lab2b {
     public static void main(String[] args) {
         Vehicle truck = new Truck("Volvo", "FH16", 2020, "Diesel");
